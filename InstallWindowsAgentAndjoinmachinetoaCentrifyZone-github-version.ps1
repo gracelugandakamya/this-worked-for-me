@@ -1,6 +1,6 @@
 # This script will install the Centrify Agent and also run the dzjoin command on the remote Windows machines and join the machines to a Centrify Zone in access manager.
 
-# This is Centrify agent package you want to copy to the servers in the $computer variable
+# This is the Centrify agent package you want to copy to the servers in the $computer variable
 $source = "C:\Windows\Temp\Centrify Agent for Windows64.exe"
 
 
@@ -21,7 +21,7 @@ Enable-WSManCredSSP -Role Client -DelegateComputer *.DOMAIN.NET -Force
 
 
 
-#This next step enables use of the delgated credentials on the remote target servers where we want to install the Centrify agent.
+#This next step enables use of the delegated credentials on the remote target servers where we want to install the Centrify agent.
 Invoke-Command -ComputerName $computers -ScriptBlock {Enable-WSManCredSSP -role server -Force} -Credential $credential
 
 
@@ -59,7 +59,7 @@ Remove-PSSession -ComputerName $computers  -Verbose
 
 
 
-#This tells the script to wait for 60 seconds as the Centrify agent finishes installing the AGent and laying down libraries.
+#This tells the script to wait for 60 seconds as the Centrify agent finishes installing the Agent and laying down libraries.
 Start-Sleep -seconds 600 -Verbose
 
 
